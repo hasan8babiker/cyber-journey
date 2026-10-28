@@ -131,3 +131,39 @@ Click a question to reveal the answer.
 <details><summary>Burp Repeater vs Intruder?</summary>Repeater = manually resend and tweak one request. Intruder = automate many requests with changing payloads (fuzzing, brute force).</details>
 
 <details><summary>What does http_inspect.py show?</summary>Status code, redirect chain, response headers, and cookies (with domain, path, Secure, HttpOnly).</details>
+
+## Day 5: Bandit and CTF Basics
+
+<details><summary>Connect to a Bandit level?</summary><code>ssh bandit0@bandit.labs.overthewire.org -p 2220</code>. Bandit uses port 2220, not 22.</details>
+
+<details><summary>Read a file named "-" or with spaces?</summary><code>cat ./-</code> for a dash file. <code>cat "my file"</code> or <code>cat my\ file</code> for spaces.</details>
+
+<details><summary>Find a file by size, owner, and group?</summary><code>find / -user bandit7 -group bandit6 -size 33c 2>/dev/null</code> (c = bytes).</details>
+
+<details><summary>Find the one unique line in a file?</summary><code>sort file | uniq -u</code>. uniq only compares adjacent lines, so sort first.</details>
+
+<details><summary>Extract readable text from a binary file?</summary><code>strings file</code>. Combine with grep: <code>strings file | grep "="</code>.</details>
+
+<details><summary>Decode base64?</summary><code>echo "TEXT" | base64 -d</code> (or <code>base64 -d file</code>).</details>
+
+<details><summary>Decode ROT13?</summary><code>echo "TEXT" | tr 'A-Za-z' 'N-ZA-Mn-za-m'</code>.</details>
+
+<details><summary>Convert a hex dump back to a file?</summary><code>xxd -r hexdump.txt output</code>. Check the type with <code>file output</code>.</details>
+
+<details><summary>What does the file command do?</summary>Identifies a file's real type from its contents (gzip, bzip2, tar, ASCII text), ignoring the extension.</details>
+
+<details><summary>Extract gzip, bzip2, and tar files?</summary><code>gzip -d</code> (or <code>gunzip</code>), <code>bzip2 -d</code>, <code>tar xf file.tar</code>. Rename with the right extension first when needed.</details>
+
+<details><summary>Work in a writable directory on Bandit?</summary><code>mktemp -d</code> creates a private folder in /tmp. Work there, since your home may be read-only.</details>
+
+<details><summary>Log in to the next level with a private key?</summary><code>chmod 600 key.private</code> then <code>ssh -i key.private user@host -p 2220</code>. ssh rejects keys with loose permissions.</details>
+
+<details><summary>Send data to a port / test a service?</summary><code>nc localhost PORT</code> or <code>echo "pass" | nc localhost PORT</code>. Add <code>ncat --ssl</code> or <code>openssl s_client -connect host:port</code> for TLS.</details>
+
+<details><summary>Scan a range of ports?</summary><code>nmap -p 31000-32000 localhost</code>. Add <code>-sV</code> to detect service versions.</details>
+
+<details><summary>Typical CTF flag format?</summary>picoCTF uses <code>picoCTF{...}</code>. Always copy the full string with braces.</details>
+
+<details><summary>What does 2>/dev/null do?</summary>Sends error messages (stderr) to nowhere, hiding Permission denied noise from find.</details>
+
+<details><summary>What does decoder.py do?</summary>Decodes base64, hex, and ROT13 from text or a file, so you can quickly identify and decode CTF encodings.</details>
