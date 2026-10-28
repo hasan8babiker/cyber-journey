@@ -49,3 +49,85 @@ Click a question to reveal the answer.
 <details><summary>Remote login / copy a file remotely?</summary><code>ssh user@host</code> / <code>scp file user@host:/path</code> (encrypted, port 22).</details>
 
 <details><summary>cat, head, tail?</summary>Whole file, first 10 lines, last 10 lines. <code>tail -f</code> follows a log live.</details>
+
+## Day 3: Windows Fundamentals
+
+<details><summary>See which groups a user belongs to?</summary><code>net user USERNAME</code> and read Local Group Memberships. GUI: <code>lusrmgr.msc</code>, Users, double-click the user, Member Of tab.</details>
+
+<details><summary>List members of a group?</summary><code>net localgroup Administrators</code> (swap in any group name).</details>
+
+<details><summary>Open the Local Users and Groups tool?</summary>Win+R, then <code>lusrmgr.msc</code>. (Not on Windows Home; use <code>net user</code> instead.)</details>
+
+<details><summary>Add a user to a group / create a user?</summary><code>net localgroup GROUP USER /add</code> / <code>net user USER PASSWORD /add</code>.</details>
+
+<details><summary>What does "Change account type" do?</summary>Only toggles Standard user vs Administrator. It does not show other group memberships.</details>
+
+<details><summary>Standard user vs Administrator?</summary>Administrators can change system-wide settings, install software, and manage other accounts. Standard users are limited and need admin approval for system changes.</details>
+
+<details><summary>What is UAC?</summary>User Account Control: prompts for approval before an action runs with admin rights, limiting what malware can do silently.</details>
+
+<details><summary>What is the SAM database?</summary>Security Account Manager: stores local account password hashes (C:\Windows\System32\config\SAM). Attackers dump it to crack passwords.</details>
+
+<details><summary>What is a SID?</summary>Security Identifier: the unique ID Windows uses for a user or group. Admin account RID ends in -500.</details>
+
+<details><summary>What is the Windows Registry?</summary>Hierarchical database of system and app settings. Edit with <code>regedit</code>. Main hives: HKLM (machine) and HKCU (current user).</details>
+
+<details><summary>What is NTFS?</summary>The default Windows file system. Supports file permissions (ACLs), encryption (EFS), and journaling.</details>
+
+<details><summary>Where are the Windows system files?</summary><code>C:\Windows\System32</code>. User data is in <code>C:\Users</code>.</details>
+
+<details><summary>Which tool shows logs on Windows?</summary>Event Viewer (<code>eventvwr</code>): Security log for logons, System log for services and drivers, Application log for apps.</details>
+
+<details><summary>Event ID 4624 and 4625?</summary>4624 = successful logon, 4625 = failed logon. Many 4625s in a row suggest brute force.</details>
+
+<details><summary>List processes / stop one from the command line?</summary><code>tasklist</code> / <code>taskkill /PID 1234 /F</code>.</details>
+
+<details><summary>What are Windows services?</summary>Background programs that start without a user logged in. Manage with <code>services.msc</code> or <code>sc query</code>.</details>
+
+<details><summary>Show current user and their privileges?</summary><code>whoami</code>, <code>whoami /groups</code>, <code>whoami /priv</code>.</details>
+
+<details><summary>Show network config on Windows?</summary><code>ipconfig /all</code> (like ip a). <code>netstat -ano</code> lists connections and the owning PID.</details>
+
+<details><summary>CMD vs PowerShell?</summary>CMD is the legacy shell. PowerShell is object-based, scriptable, and the main admin and attacker tool on modern Windows.</details>
+
+<details><summary>Built-in antivirus and firewall?</summary>Windows Defender (Security) and Windows Defender Firewall. Check status in Windows Security.</details>
+
+## Day 4: Web Fundamentals
+
+<details><summary>What happens when you type a URL in a browser?</summary>DNS lookup (domain to IP), TCP handshake, TLS handshake (if HTTPS), browser sends the HTTP request, server sends the response, browser renders it.</details>
+
+<details><summary>Main HTTP methods?</summary>GET = retrieve, POST = send/create data, PUT = replace/update, DELETE = remove, HEAD = headers only, OPTIONS = list allowed methods.</details>
+
+<details><summary>GET vs POST?</summary>GET puts data in the URL (visible, logged, cached). POST puts data in the request body (not shown in the URL).</details>
+
+<details><summary>Status code ranges?</summary>1xx info, 2xx success, 3xx redirect, 4xx client error, 5xx server error.</details>
+
+<details><summary>200, 301, 302, 404, 500?</summary>200 OK, 301 permanent redirect, 302 temporary redirect, 404 not found, 500 server error.</details>
+
+<details><summary>401 vs 403?</summary>401 = you haven't proven who you are. 403 = the server knows who you are and still refuses.</details>
+
+<details><summary>Structure of an HTTP request?</summary>Request line (method, path, version), headers, blank line, optional body.</details>
+
+<details><summary>Structure of an HTTP response?</summary>Status line (version, code, reason), headers, blank line, body.</details>
+
+<details><summary>Host header?</summary>Tells the server which domain you want, so one IP can host many sites.</details>
+
+<details><summary>User-Agent header?</summary>Identifies the client (browser or tool). Easily spoofed.</details>
+
+<details><summary>Content-Type header?</summary>Describes the body format (e.g. text/html, application/json, application/x-www-form-urlencoded).</details>
+
+<details><summary>What is a cookie?</summary>Small data the server sets with the Set-Cookie header; the browser sends it back with the Cookie header on later requests. Used for sessions and tracking.</details>
+
+<details><summary>Cookie flags: HttpOnly, Secure, SameSite?</summary>HttpOnly = JavaScript can't read it (helps against XSS theft). Secure = sent only over HTTPS. SameSite = limits cross-site sending (helps against CSRF).</details>
+
+<details><summary>What is a session?</summary>Server-side state tied to a user, usually identified by a session ID stored in a cookie.</details>
+
+<details><summary>Key security headers?</summary>Content-Security-Policy, Strict-Transport-Security (HSTS), X-Frame-Options, X-Content-Type-Options.</details>
+
+<details><summary>HTTP vs HTTPS?</summary>HTTPS is HTTP over TLS: encrypted, integrity-protected, and authenticates the server.</details>
+
+<details><summary>What is Burp Proxy used for?</summary>It sits between browser and server so you can intercept, inspect, modify, and forward requests and responses.</details>
+
+<details><summary>Burp Repeater vs Intruder?</summary>Repeater = manually resend and tweak one request. Intruder = automate many requests with changing payloads (fuzzing, brute force).</details>
+
+<details><summary>What does http_inspect.py show?</summary>Status code, redirect chain, response headers, and cookies (with domain, path, Secure, HttpOnly).</details>
