@@ -1,12 +1,11 @@
 What is OSI Model?
 
 
-- shortcut for 
-- Open System Interconnection Model.
+- shortcut for (Open System Interconnection Model)
 - and its has 7 layers
 
 OSI Model layers:
--1 Application -> -2 Presntation -> -3 Session -> -4 Transport -> -5 Network -> -6 Data Link -> -7 Physical
+-1 Application -> -2 Presentation -> -3 Session -> -4 Transport -> -5 Network -> -6 Data Link -> -7 Physical
 
 
 TCP/IP 4 Layers: 
@@ -15,7 +14,7 @@ TCP/IP 4 Layers:
 -3 Transport
 -4 Application (combines OSI Session, Presentation, and Application).
 
-The OSI model is a 7-layer theoretical framework, while TCP/IP is a 4-layer practical architecture that powers the modern interne
+The OSI model is a 7-layer theoretical framework, while TCP/IP is a 4-layer practical architecture that powers the modern internet
 
 Encapsulation: Data wraps top-down with headers—Data → Segment (Transport) → Packet (Internet) → Frame (Link) → Bits (Physical)
 
