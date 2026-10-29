@@ -39,7 +39,6 @@ The decoded text had the `picoCTF{...}` format. *(Flag not shown on purpose.)*
 ## What I learned
 - Numbers in the 32-126 range are a strong hint for ASCII; hex pairs (`70 69 63 6f`) and binary are the same idea in other bases.
 - Building the tool first paid off: the same decoder now solves a whole class of challenges.
-- [Fill in: what you tried first, e.g. decoding by hand or a wrong base]
 
 ## How to defend against it / real-world relevance
 Encoding is not encryption. Anyone who sees the numbers can reverse them in seconds. Never "protect" credentials or tokens by only encoding them (base64, hex, ASCII codes); use proper encryption or hashing.
