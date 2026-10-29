@@ -1,6 +1,5 @@
 # OverTheWire Bandit: Level 12 → 13
-## Challenge link
-[Nice netcat... on picoGym](https://overthewire.org/wargames/bandit/bandit13.html)
+
 **Platform:** OverTheWire Bandit | **Difficulty:** Easy-Medium | **Date:** 2026-10-28
 **Skills:** hex dumps, file-type identification, compression formats, working in `/tmp`
 
@@ -67,8 +66,6 @@ When `file` reports `ASCII text`, the script prints it, and that is the password
 - **Identify before acting.** `file` tells me the real format; the extension can lie.
 - **Layered or nested encoding is common in CTFs.** The method is always: identify, decode, repeat. I turned this idea into `decoder.py`.
 - The first few layers were fine by hand, but by the fourth it was repetitive and easy to mistype. That’s why I wrote unpack.sh.
-
-“I didn’t expect the file to be compressed so many times.” Use it only if it’s real.
 
 ## How to defend against it / real-world relevance
 Attackers and malware authors nest compression and encoding to evade simple signature scanning. Security tools unpack archives recursively and inspect each layer, with depth limits to stop "zip bombs."

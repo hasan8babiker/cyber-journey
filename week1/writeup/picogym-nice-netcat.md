@@ -1,7 +1,5 @@
 # picoGym (General Skills): Nice netcat...
 
-## Challenge link
-[Nice netcat... on picoGym](https://learn.cylabacademy.org/learning-paths/14/98)
 
 **Platform:** picoCTF / picoGym | **Category:** General Skills | **Difficulty:** Easy | **Date:** 2026-10-28
 **Skills:** netcat, ASCII encoding, decoding numbers to text, scripting a decoder
