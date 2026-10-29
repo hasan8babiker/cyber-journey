@@ -38,3 +38,13 @@ TCP guarantees reliable, ordered data delivery with error checking.
 
 	3. ACK: The client replies with an acknowledgement packet, and the session opens
 
+Ports
+
+• Purpose: 
+Virtual endpoints (1 to 65535) that let a single host run multiple network services simultaneously.
+
+
+
+HTTP (Hypertext Transfer Protocol)
+
+• What it does: An application-layer protocol used to request and transmit web content (such as HTML documents, images, and JSON data) between a client (browser) and a server
