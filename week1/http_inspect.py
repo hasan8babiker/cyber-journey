@@ -1,9 +1,9 @@
-print("""http_inspect.py - print status code, headers, and cookies for a URL.
+"""http_inspect.py - print status code, headers, and cookies for a URL.
 
 Usage:
 	python http_inspect.py http://example.com
 	python http_inscpet.py example.com --no-redirects
-	""")
+	"""
 
 
 import argparse
