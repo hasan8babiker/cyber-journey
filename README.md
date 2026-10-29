@@ -1,4 +1,7 @@
 # cyber-journey
+
+Cybersecurity Roadmap, Cybersecurity Learning
+
 12-month public log of my path from self-taught learner to cybersecurity engineer: labs, writeups, tools, and weekly progress.
 
 cyber-journey
@@ -52,9 +55,4 @@ All scanning and testing is done only on systems I own, on intentionally vulnera
 
 Links
 Portfolio: https://hasan8babiker.github.io/hasan-portfolio
-Readme
-MD
-Week1 readme
-MD
-Memory
-Read · Cybersecurity Roadmap, Cybersecurity Learning
+@hasan8babiker
