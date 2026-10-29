@@ -10,7 +10,7 @@ if __name__ == "__main__":
   host = input("Enter url example scanme.nmap.org: ")
   if host != '':
   	for port in (22, 80, 443):
-  		print(f"{host}:{port} ->", "open" if check_port(host, port) else "closed/filterd")
+  		print(f"{host}:{port} ->", "open" if check_port(host, port) else "closed/filtered")
 
   else:
   	print("Please Enter a Valid url")
