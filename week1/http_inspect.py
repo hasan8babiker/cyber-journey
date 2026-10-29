@@ -2,7 +2,7 @@
 
 Usage:
 	python http_inspect.py http://example.com
-	python http_inscpet.py example.com --no-redirects
+	python http_inspect.py example.com --no-redirects
 	"""
 
 
