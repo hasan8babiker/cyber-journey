@@ -47,3 +47,38 @@
 
 **Q:** How does your port checker know a port is open?
 **A:** connect_ex() returns 0, meaning the full TCP handshake completed.
+
+## Week 2 Day 2: DNS, DHCP, Subnetting
+
+**Q:** DNS resolution order?
+**A:** Browser cache → OS cache → recursive resolver → root server → TLD server → authoritative server
+
+**Q:** A vs AAAA vs CNAME vs MX vs TXT vs NS vs PTR?
+**A:** A: name → IPv4. AAAA: name → IPv6. CNAME: alias to another name. MX: mail server. TXT: arbitrary text (SPF, DKIM, verification). NS: authoritative nameserver. PTR: IP → name (reverse lookup).
+
+**Q:** What is a DNS zone transfer (AXFR) and why is it dangerous?
+**A:** It copies the full zone's records from a nameserver. If it's open to anyone, attackers get a complete map of hosts and subdomains.
+
+**Q:** DHCP DORA?
+**A:** Discover → Offer → Request → Acknowledge
+
+**Q:** dig command for MX records?
+**A:** dig MX example.com (add +short for a compact answer)
+
+**Q:** Reverse DNS lookup command?
+**A:** dig -x 8.8.8.8
+
+**Q:** Default DNS port and protocols?
+**A:** 53, UDP for normal queries, TCP for large responses and zone transfers
+
+**Q:** Subnet math: 192.168.1.0/26, what are the network, broadcast and usable range?
+**A:** Network .0, broadcast .63, usable .1 to .62
+
+**Q:** Block size for /27? /28?
+**A:** 32 / 16 (256 minus the last octet of the mask)
+
+**Q:** What's passive vs active recon?
+**A:** Passive: no direct contact with the target (whois, DNS lookups, search engines). Active: sends traffic to the target (port scans, banner grabs).
+
+**Q:** What does set -euo pipefail do in Bash?
+**A:** Exit on errors (-e), treat unset variables as errors (-u), fail a pipeline if any command in it fails (pipefail)
