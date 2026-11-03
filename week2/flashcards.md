@@ -82,3 +82,43 @@
 
 **Q:** What does set -euo pipefail do in Bash?
 **A:** Exit on errors (-e), treat unset variables as errors (-u), fail a pipeline if any command in it fails (pipefail)
+## Week 2 Day 3: Wireshark + Packet Analysis
+
+**Q:** Capture filter vs display filter?
+**A:** Capture filters (BPF syntax) limit what gets recorded. Display filters (Wireshark syntax) hide packets after capture.
+
+**Q:** Display filter for traffic to or from an IP?
+**A:** ip.addr == 10.0.0.5 (use ip.src or ip.dst for one direction)
+
+**Q:** Display filters for DNS, HTTP, a TCP port?
+**A:** dns, http, tcp.port == 443
+
+**Q:** Display filter for SYN-only packets (scan indicator)?
+**A:** tcp.flags.syn == 1 && tcp.flags.ack == 0
+
+**Q:** Capture filter for port 80 only?
+**A:** port 80
+
+**Q:** How do you rebuild a full conversation?
+**A:** Right-click a packet → Follow → TCP Stream (or Ctrl+Alt+Shift+T)
+
+**Q:** How do you find cleartext credentials in a capture?
+**A:** Filter http.request.method == "POST" or ftp, then Follow Stream. Telnet, FTP and HTTP send credentials unencrypted.
+
+**Q:** What does a port scan look like in a capture?
+**A:** One source sending SYNs to many ports. Closed ports reply RST, open ones reply SYN-ACK.
+
+**Q:** Wireshark Statistics menu items to know?
+**A:** Conversations, Endpoints, Protocol Hierarchy, I/O Graph
+
+**Q:** tcpdump command to save traffic on eth0 to a file?
+**A:** sudo tcpdump -i eth0 -w capture.pcap
+
+**Q:** tcpdump command to read a saved capture?
+**A:** tcpdump -r capture.pcap
+
+**Q:** Sign of ARP spoofing in a capture?
+**A:** Multiple IPs claiming the same MAC, or repeated unsolicited ARP replies
+
+**Q:** Why can't you read HTTPS payloads in Wireshark?
+**A:** TLS encrypts them. You'd need the session keys (SSLKEYLOGFILE) to decrypt.
