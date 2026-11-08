@@ -170,3 +170,47 @@
 
 **Q:** Why scan with -sV after finding open ports?
 **A:** Port numbers can lie. Services run on non-standard ports, and version info points to known vulnerabilities.
+
+## Week 2 Day 5: Protocols and Banner Grabbing
+
+**Q:** Default ports: FTP, SSH, Telnet, SMTP, HTTP?
+**A:** 21, 22, 23, 25, 80
+
+**Q:** Default ports: POP3, IMAP, and their encrypted versions?
+**A:** POP3 110 (995 with TLS), IMAP 143 (993 with TLS)
+
+**Q:** Encrypted replacements for HTTP, FTP, Telnet, SMTP?
+**A:** HTTPS (443), SFTP or FTPS, SSH, SMTPS/STARTTLS (465/587)
+
+**Q:** Why are Telnet, FTP and HTTP insecure?
+**A:** They send data and credentials in cleartext, so anyone sniffing the network (Wireshark) can read them.
+
+**Q:** What is a service banner?
+**A:** The text a service sends on connect, often with software name and version (e.g. SSH-2.0-OpenSSH_8.2p1).
+
+**Q:** Why do attackers grab banners?
+**A:** The version points to known vulnerabilities (CVEs). Defenders can hide or change banners, but that isn't real security.
+
+**Q:** Netcat command to connect to a port?
+**A:** nc -nv <ip> <port> (-n skip DNS, -v verbose)
+
+**Q:** Netcat command to listen on a port?
+**A:** nc -lvnp 4444
+
+**Q:** HTTP methods and what HEAD does?
+**A:** GET, POST, PUT, DELETE, HEAD, OPTIONS. HEAD returns only the headers, no body.
+
+**Q:** Common HTTP status code groups?
+**A:** 2xx success, 3xx redirect, 4xx client error (403 forbidden, 404 not found), 5xx server error
+
+**Q:** Manual SMTP commands in order?
+**A:** HELO/EHLO, MAIL FROM, RCPT TO, DATA, QUIT
+
+**Q:** FTP anonymous login?
+**A:** Username "anonymous" with any password. A common misconfiguration worth checking in every scan.
+
+**Q:** Why does python socket.create_connection raise on closed ports?
+**A:** The TCP connect fails (connection refused or timeout), so the code treats that as closed or filtered.
+
+**Q:** Difference between active banner grabbing and passive?
+**A:** Active: connect and read the banner (nc, nmap -sV). Passive: observe traffic without contacting the target (packet captures).
