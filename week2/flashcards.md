@@ -82,6 +82,7 @@
 
 **Q:** What does set -euo pipefail do in Bash?
 **A:** Exit on errors (-e), treat unset variables as errors (-u), fail a pipeline if any command in it fails (pipefail)
+
 ## Week 2 Day 3: Wireshark + Packet Analysis
 
 **Q:** Capture filter vs display filter?
@@ -122,3 +123,50 @@
 
 **Q:** Why can't you read HTTPS payloads in Wireshark?
 **A:** TLS encrypts them. You'd need the session keys (SSLKEYLOGFILE) to decrypt.
+
+## Week 2 Day 4: Nmap
+
+**Q:** Host discovery only, no port scan?
+**A:** nmap -sn <target> (ping scan)
+
+**Q:** -sS vs -sT?
+**A:** -sS: SYN (half-open/stealth) scan, needs root, never completes the handshake. -sT: full TCP connect scan, works without root, noisier.
+
+**Q:** UDP scan flag and why it's slow?
+**A:** -sU. Open UDP ports often don't respond, so nmap has to wait and retransmit.
+
+**Q:** Service/version detection? OS detection? Aggressive?
+**A:** -sV / -O / -A (-A = -sV + -O + default scripts + traceroute)
+
+**Q:** Scan all 65535 ports?
+**A:** -p- (or -p 1-65535)
+
+**Q:** Scan specific ports?
+**A:** -p 22,80,443 or -p 1-1000
+
+**Q:** Nmap's six port states?
+**A:** open, closed, filtered, unfiltered, open|filtered, closed|filtered
+
+**Q:** What does "filtered" mean?
+**A:** Nmap can't tell if the port is open because a firewall or filter is dropping the probes.
+
+**Q:** Skip host discovery (treat all hosts as up)?
+**A:** -Pn (useful when the target blocks ping)
+
+**Q:** Timing templates?
+**A:** -T0 paranoid, -T1 sneaky, -T2 polite, -T3 normal (default), -T4 aggressive, -T5 insane
+
+**Q:** Output formats and the flag that saves all of them?
+**A:** -oN normal, -oX XML, -oG grepable, -oA all three
+
+**Q:** Run default scripts? A specific script category?
+**A:** -sC / --script vuln (or --script <name>)
+
+**Q:** Read targets from a file?
+**A:** -iL targets.txt
+
+**Q:** Increase verbosity during a scan?
+**A:** -v or -vv (press Enter mid-scan for status)
+
+**Q:** Why scan with -sV after finding open ports?
+**A:** Port numbers can lie. Services run on non-standard ports, and version info points to known vulnerabilities.
