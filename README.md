@@ -1,57 +1,50 @@
-# cyber-journey
+# Cyber Journey
 
+My self-taught path toward a career as a cybersecurity engineer. This repo holds my notes, CTF writeups, and projects, all in public.
 
-12-month public log of my path from self-taught learner to cybersecurity engineer: labs, writeups, tools, and weekly progress.
+**Portfolio:** [hasan8babiker.github.io/hasan-portfolio](https://hasan8babiker.github.io/hasan-portfolio)
 
-cyber-journey
+## How I'm learning
 
-A public log of my 12-month journey from self-taught learner to cybersecurity engineer.
+- **Courses and books** for depth
+- **Projects** to build real tools and show my work
+- **CTFs** (picoCTF, TryHackMe, Hack The Box) for hands-on practice
 
-Started: 2026-10-24 Pace: 5 hours/day, 6 days/week (Sat-Thu) Goal: Land a cybersecurity engineer role and build a portfolio that proves the skills.
+See [STARTER_CHECKLIST.md](STARTER_CHECKLIST.md) for the current plan.
 
-How I study
+## Repo structure
 
-Every day is split into five blocks:
-
-Block	Time
-Theory	0:30
-Labs (TryHackMe, Bandit, picoGym)	2:30
-Coding (Python/Bash)	1:00
-Writeup	0:30
-Review	0:30
-
-Before each topic I take a 20-minute check. If I score 80%+, I skip it and do a harder task instead.
-
-Roadmap
-Month	Theme
-1	Foundations: networking, Linux, Windows, Python/Bash
-2	Tools and crypto: Nmap, Wireshark, port scanner
-3	Web security (10 writeups)
-4	CompTIA Security+
-5	Pentesting I (THM Jr Pentester path)
-6	eJPT
-7	SOC / blue team
-8	Incident response + Wazuh home lab
-9	Cloud security (flaws.cloud)
-10	Active Directory + PNPT prep
-11	PNPT + job search (30 applications)
-12	Interviews
-Repo structure
+```
 cyber-journey/
-├── README.md
-└── week1/
-    ├── README.md
-    ├── networking-notes.md
-    └── port_checker.py
+├── ctf-writeups/     # one writeup per solved challenge
+├── projects/         # tools I've built
+│   └── port-scanner/
+├── notes/
+│   ├── course/       # course notes
+│   └── books/        # book notes
+├── archive/
+│   └── old-plan/     # earlier notes and flashcards
+├── STARTER_CHECKLIST.md
+└── weekly-log.md     # weekly progress
+```
 
-New folders (week2/, week3/, ...) are added as I go.
+## Projects
 
-Progress
- Week 1: Networking, Linux, Windows fundamentals
-Ethics
+| Project | Description | Status |
+|---|---|---|
+| [Port scanner](projects/port-scanner/) | Multithreaded TCP scanner in Python with banner grabbing and JSON output | In progress |
+| CTF decoder | Python tool for decoding common CTF encodings from files or text | Done |
 
-All scanning and testing is done only on systems I own, on intentionally vulnerable lab platforms (TryHackMe, picoCTF, OverTheWire), or on hosts that explicitly allow it.
+## Progress so far
 
-Links
-Portfolio: https://hasan8babiker.github.io/hasan-portfolio
-@hasan8babiker
+- Completed picoGym General Skills
+- Worked through TryHackMe fundamentals (networking, Linux, Windows, web) and Nmap rooms
+- Working through the OverTheWire Bandit wargame
+
+## Skills
+
+Python, Linux, networking fundamentals, Nmap, Wireshark, basic web security, Git/GitHub
+
+## Contact
+
+GitHub: [@hasan8babiker](https://github.com/hasan8babiker)
