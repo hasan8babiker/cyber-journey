@@ -214,3 +214,59 @@
 
 **Q:** Difference between active banner grabbing and passive?
 **A:** Active: connect and read the banner (nc, nmap -sV). Passive: observe traffic without contacting the target (packet captures).
+
+## Week 2, Day 6
+
+**Q:** `nmap -sS` vs `-sT`: what's the difference?
+**A:** `-sS` (SYN) sends SYN, gets SYN/ACK, then sends RST without finishing the handshake. Needs root. `-sT` (connect) completes the full handshake. No root needed, but it is logged more.
+
+**Q:** What are the three main Nmap port states?
+**A:** Open (service accepting connections), closed (reachable, nothing listening, replies RST), filtered (no reply or ICMP error, a firewall is probably dropping packets).
+
+**Q:** Why are UDP scans (`-sU`) slow?
+**A:** Open UDP ports often send no reply, and closed ports send ICMP unreachable that is rate-limited. Nmap has to wait and retry.
+
+**Q:** What do `-sV`, `-O` and `-A` do?
+**A:** `-sV` detects service versions, `-O` detects the OS, `-A` = `-sV` + `-O` + default scripts + traceroute.
+
+**Q:** How do you scan all 65535 ports quickly?
+**A:** `nmap -p- -T4 <host>`
+
+**Q:** Nmap output formats?
+**A:** `-oN` normal, `-oG` greppable, `-oX` XML, `-oA name` all three.
+
+**Q:** In Python, how does `sock.connect_ex((host, port))` signal an open port?
+**A:** It returns 0 on success instead of raising an exception. Any non-zero value is an error code (closed, timed out, unreachable).
+
+**Q:** Why use threads (`ThreadPoolExecutor`) in a port scanner?
+**A:** Scanning is I/O-bound: most time is spent waiting on timeouts. Threads let many connections wait in parallel, so the scan takes seconds instead of minutes.
+
+**Q:** What is banner grabbing?
+**A:** Connecting to a service and reading what it sends (e.g. `SSH-2.0-OpenSSH_8.2p1`) to identify the product and version. Some services speak first (SSH, FTP, SMTP); HTTP needs a request such as `HEAD /`.
+
+**Q:** Why can a banner-based version be wrong?
+**A:** Admins can hide or spoof banners, and distros backport security fixes without changing the version string. Always verify before calling something vulnerable.
+
+**Q:** What are CVE, CVSS and NVD?
+**A:** CVE = unique ID for a public vulnerability. CVSS = 0-10 severity score (9.0+ is critical). NVD = NIST's database that enriches CVEs with scores and affected products.
+
+**Q:** What is a CPE?
+**A:** A standard name for a product and version, e.g. `cpe:2.3:a:apache:http_server:2.4.49`. Querying by CPE is more accurate than keyword search.
+
+**Q:** What does KEV mean?
+**A:** CISA's Known Exploited Vulnerabilities catalog: CVEs confirmed exploited in the wild. Patch these first.
+
+**Q:** Which command finds SUID files, and why does it matter?
+**A:** `find / -perm -4000 2>/dev/null`. SUID binaries run as their owner (often root), so they are a privilege-escalation lead.
+
+**Q:** What does `ss -tulpn` show?
+**A:** Listening TCP/UDP sockets with numeric ports and the owning process (`-p` needs root for other users' processes).
+
+**Q:** What does `chmod 754 file` mean?
+**A:** Owner rwx (7), group r-x (5), others r-- (4). Values: r=4, w=2, x=1.
+
+**Q:** What does `2>/dev/null` do?
+**A:** Redirects stderr (file descriptor 2) to the null device, discarding error messages such as "Permission denied" from `find`.
+
+**Q:** Which command lists what you can run as root?
+**A:** `sudo -l`
