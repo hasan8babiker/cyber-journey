@@ -64,7 +64,6 @@ a- symmetric
 
 
 
-
 Conclusion
 
 This room showed that cryptography is what keeps data safe on an untrusted network. The Caesar cipher is simple: shift each letter by a key n, using E(x) = (x + n) mod 26. It is also weak, because only 25 keys exist. Trying every shift, which my caesar.py tool does with -a, breaks it in seconds. That is why modern systems don’t rely on it.
@@ -85,6 +84,4 @@ Asymmetric encryption exchanges keys, and symmetric encryption protects the data
 Next up: modern ciphers like AES and RSA, and why strong keys matter.
 
 social media: @hasan8babiker
-gtihub: https://github.com/hasan8babiker/
-
-
+Happy Hunting 
